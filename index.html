@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Palindrome</title>
+
+    <style>
+        h1, h2 {
+            text-align: center;
+            font-size: 80px;
+            padding: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            height: 40vh;
+        }
+
+        input {
+            width: 600px;
+            height: 200px;
+            margin-bottom: 10px;
+            font-size: xx-large;
+            text-align: center;
+        }
+
+        button {
+            text-align: center;
+            padding: 30px 200px;
+            margin: 10px 10px;
+            font-size: large;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 20vh;
+        }
+        
+    </style>
+</head>
+
+<body style="background-color: antiquewhite;">
+
+    <h1>Palindrome Checker</h1>
+
+    <div class="container">
+        <input type="text" id="word" name="word">
+        <div class="button-container">
+            <button id="checkButton" name="button" onclick="checkPalindrome()">CHECK</button>
+        </div>
+    </div>
+
+    <u><h2 id="result"> </h2></u>
+
+    <script>
+        function checkPalindrome() {
+            const word = document.getElementById('word').value;
+            const reversedWord = reverseWord(word);
+            const resultElement = document.getElementById('result');
+
+            if (word === reversedWord) {
+                resultElement.textContent = "The word is a Palindrome";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.textContent = "The word is not a Palindrome";
+                resultElement.style.color = "red";
+            }
+        }
+
+        function reverseWord(word) {
+            if (word === "" || word.length === 1) {
+                return word;
+            }
+            return reverseWord(word.substring(1)) + word.charAt(0);
+        }
+    </script>
+
+</body>
+</html>
